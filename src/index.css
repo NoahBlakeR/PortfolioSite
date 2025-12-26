@@ -15,6 +15,10 @@
   --max-width: 1140px;
   --font-display: "Fraunces", "Times New Roman", serif;
   --font-body: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --scroll-progress: 0;
+  --bg-shift: 0px;
+  --hero-shift: 0px;
+  --hero-shift-soft: 0px;
 }
 
 *,
@@ -41,6 +45,9 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -2;
+  transform: translateY(var(--bg-shift));
+  transition: transform 0.25s ease-out;
+  will-change: transform;
   background:
     radial-gradient(circle at 10% 10%, rgba(192, 24, 99, 0.18), transparent 45%),
     radial-gradient(circle at 90% 20%, rgba(255, 122, 168, 0.14), transparent 40%),
@@ -120,6 +127,21 @@ p {
 
 .skip-link:focus {
   left: 16px;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transform-origin: left;
+  transform: scaleX(var(--scroll-progress));
+  transition: transform 0.15s ease-out;
+  z-index: 20;
+  opacity: 0.9;
+  pointer-events: none;
 }
 
 .container {
@@ -209,6 +231,7 @@ p {
 
 .section {
   padding: 80px 0;
+  scroll-margin-top: 90px;
 }
 
 .hero {
@@ -225,8 +248,9 @@ p {
 .hero-copy {
   max-width: 560px;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(calc(20px + var(--hero-shift-soft)));
   transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: transform;
 }
 
 .hero-copy h1 {
@@ -259,7 +283,7 @@ p {
 
 .hero-card {
   background: linear-gradient(#fff, #fff) padding-box,
-    linear-gradient(135deg, rgba(45, 91, 255, 0.6), rgba(0, 179, 164, 0.6)) border-box;
+    linear-gradient(135deg, rgba(192, 24, 99, 0.6), rgba(255, 122, 168, 0.6)) border-box;
   border: 1px solid transparent;
   border-radius: var(--radius-lg);
   padding: 28px;
@@ -267,15 +291,16 @@ p {
   position: relative;
   overflow: hidden;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(calc(20px + var(--hero-shift)));
   transition: opacity 0.8s ease 0.15s, transform 0.8s ease 0.15s;
+  will-change: transform;
 }
 
 .hero-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top right, rgba(45, 91, 255, 0.12), transparent 50%);
+  background: radial-gradient(circle at top right, rgba(192, 24, 99, 0.12), transparent 50%);
   pointer-events: none;
 }
 
@@ -305,7 +330,7 @@ p {
   height: 8px;
   border-radius: 50%;
   background: var(--accent-2);
-  box-shadow: 0 0 0 6px rgba(0, 179, 164, 0.2);
+  box-shadow: 0 0 0 6px rgba(255, 122, 168, 0.2);
 }
 
 .subtle {
@@ -336,7 +361,11 @@ p {
 body.loaded .hero-copy,
 body.loaded .hero-card {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(var(--hero-shift));
+}
+
+body.loaded .hero-copy {
+  transform: translateY(var(--hero-shift-soft));
 }
 
 .clients {
@@ -730,5 +759,14 @@ body.loaded .hero-card {
     transition: none;
     transform: none;
     opacity: 1;
+  }
+
+  body::before {
+    transform: none;
+    transition: none;
+  }
+
+  .scroll-progress {
+    transition: none;
   }
 }

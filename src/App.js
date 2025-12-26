@@ -7,23 +7,59 @@ const App = () => {
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
+    const root = document.documentElement;
     document.body.classList.add('loaded');
 
-    const handleScroll = () => {
-      if (!headerRef.current) {
-        return;
+    let rafId = null;
+
+    const updateScrollState = () => {
+      rafId = null;
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const maxScroll =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? scrollTop / maxScroll : 0;
+
+      root.style.setProperty('--scroll-progress', progress.toString());
+
+      if (prefersReducedMotion) {
+        root.style.setProperty('--bg-shift', '0px');
+        root.style.setProperty('--hero-shift', '0px');
+        root.style.setProperty('--hero-shift-soft', '0px');
+      } else {
+        const bgShift = Math.min(scrollTop * 0.08, 120);
+        const heroShift = Math.min(scrollTop * 0.06, 80);
+        root.style.setProperty('--bg-shift', `${-bgShift}px`);
+        root.style.setProperty('--hero-shift', `${-heroShift}px`);
+        root.style.setProperty('--hero-shift-soft', `${-heroShift * 0.6}px`);
       }
-      headerRef.current.classList.toggle('is-scrolled', window.scrollY > 8);
+
+      if (headerRef.current) {
+        headerRef.current.classList.toggle('is-scrolled', scrollTop > 8);
+      }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    const onScroll = () => {
+      if (rafId !== null) {
+        return;
+      }
+      rafId = window.requestAnimationFrame(updateScrollState);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    updateScrollState();
 
     const revealItems = Array.from(document.querySelectorAll('.reveal'));
 
     if (prefersReducedMotion) {
       revealItems.forEach((item) => item.classList.add('is-visible'));
-      return () => window.removeEventListener('scroll', handleScroll);
+      return () => {
+        if (rafId !== null) {
+          window.cancelAnimationFrame(rafId);
+        }
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+      };
     }
 
     const observer = new IntersectionObserver(
@@ -42,7 +78,11 @@ const App = () => {
 
     return () => {
       observer.disconnect();
-      window.removeEventListener('scroll', handleScroll);
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
     };
   }, []);
 
@@ -51,6 +91,7 @@ const App = () => {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
+      <div className="scroll-progress" aria-hidden="true"></div>
 
       <header className="site-header" ref={headerRef}>
         <div className="container header-inner">
@@ -116,8 +157,8 @@ const App = () => {
                   <span className="meta-value">Figma, FigJam, testing</span>
                 </div>
               </div>
-              <a className="text-link" href="#project-archive">
-                See internship overview
+              <a className="text-link" href="#work">
+                See internship spotlight
               </a>
             </div>
           </div>
@@ -141,11 +182,11 @@ const App = () => {
             <div className="section-head">
               <div>
                 <p className="eyebrow">Featured work</p>
-                <h2>Two case studies, fully built and ready to share.</h2>
+                <h2>Spotlight projects built for clarity and care.</h2>
               </div>
               <p className="lead">
-                Deep dives into accessibility and brand systems with a focus on
-                clarity, craft, and measurable outcomes.
+                Two full case studies: an accessibility Chrome extension and a
+                connected-care onboarding concept.
               </p>
             </div>
 
@@ -154,7 +195,7 @@ const App = () => {
                 <div
                   className="project-cover cover-1"
                   role="img"
-                  aria-label="Soft pink gradient"
+                  aria-label="Soft rose gradient"
                 ></div>
                 <div className="project-body">
                   <div className="project-tags">
@@ -162,7 +203,7 @@ const App = () => {
                     <span className="tag">Chrome Extension</span>
                     <span className="tag">Research</span>
                   </div>
-                  <h3>Digital Accessibility ? Studio Krom</h3>
+                  <h3>Digital Accessibility - Studio Krom</h3>
                   <p>
                     Researched ADHD accessibility needs and designed a browser
                     extension that improves focus, readability, and user control.
@@ -189,26 +230,30 @@ const App = () => {
                 <div
                   className="project-cover cover-2"
                   role="img"
-                  aria-label="Warm blush gradient"
+                  aria-label="Warm blush gradient with soft glow"
                 ></div>
                 <div className="project-body">
                   <div className="project-tags">
-                    <span className="tag">Brand system</span>
-                    <span className="tag">3D design</span>
+                    <span className="tag">Internship</span>
+                    <span className="tag">Health tech</span>
+                    <span className="tag">Onboarding</span>
                   </div>
-                  <h3>Branding Project ? Studio Myo</h3>
+                  <h3>Philips Connected Care</h3>
                   <p>
-                    Built a corporate identity and visual system, extending it
-                    into 3D assets for digital touchpoints and storytelling.
+                    Designed onboarding and education flows for a connected care
+                    concept, translating clinical needs into clear, accessible
+                    steps.
                   </p>
                   <div className="project-meta">
                     <div>
                       <span className="meta-label">Role</span>
-                      <span className="meta-value">Brand + UX Design</span>
+                      <span className="meta-value">UX Design Intern</span>
                     </div>
                     <div>
                       <span className="meta-label">Deliverables</span>
-                      <span className="meta-value">Logo, guidelines, 3D assets</span>
+                      <span className="meta-value">
+                        Journey maps, wireframes, usability testing
+                      </span>
                     </div>
                   </div>
                   <a className="text-link" href="#contact">
@@ -310,9 +355,9 @@ const App = () => {
               <div className="mini-card">
                 <h3>Education</h3>
                 <ul className="principles">
-                  <li>Associate Degree, Media Design ? Fontys (present)</li>
-                  <li>Propedeuse HBO Media Design ? Fontys (2019)</li>
-                  <li>HAVO ? Comenius Lyceum Amsterdam (2018)</li>
+                  <li>Associate Degree, Media Design - Fontys (present)</li>
+                  <li>Propedeuse HBO Media Design - Fontys (2019)</li>
+                  <li>HAVO - Comenius Lyceum Amsterdam (2018)</li>
                 </ul>
               </div>
             </div>
@@ -328,10 +373,10 @@ const App = () => {
             <div className="section-head">
               <div>
                 <p className="eyebrow">Additional work</p>
-                <h2>Other projects and internship highlights.</h2>
+                <h2>More projects beyond the spotlight.</h2>
               </div>
               <p className="lead">
-                Smaller builds and collaborations that round out my case studies.
+                Branding exploration, web experiments, and smaller builds.
               </p>
             </div>
             <div className="table-wrap">
@@ -346,10 +391,10 @@ const App = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Philips Internship Project</td>
-                    <td>Connected care onboarding concept</td>
-                    <td>UX Design Intern</td>
-                    <td>2024</td>
+                    <td>Branding Project - Studio Myo</td>
+                    <td>Visual identity + 3D assets</td>
+                    <td>Brand + UX Design</td>
+                    <td>2025</td>
                   </tr>
                   <tr>
                     <td>Portfolio Website Development</td>
