@@ -165,9 +165,9 @@ const App = () => {
               <p className="eyebrow">UX Designer + Front-End</p>
               <h1>Designing accessible, confident experiences that feel calm and human.</h1>
               <p className="lead">
-                Media Design student focused on UI/UX and front-end development. I
-                blend research, prototyping, and accessible UI to build products
-                that reduce friction and build trust.
+                UX designer focused on UI/UX and front-end development. I blend
+                research, prototyping, and accessible UI to build products that
+                reduce friction and build trust.
               </p>
               <p className="note">
                 Currently transitioning my professional name to Noah Rhodes.
@@ -374,9 +374,9 @@ const App = () => {
               <p className="eyebrow">About</p>
               <h2>Designing for people first, platforms second.</h2>
               <p className="lead">
-                Media Design student at Fontys University of Applied Sciences in
-                Eindhoven, focused on UX/UI, accessibility research, and
-                front-end development.
+                UX designer with a Media Design background from Fontys University
+                of Applied Sciences in Eindhoven, focused on UX/UI, accessibility
+                research, and front-end development.
               </p>
               <ul className="about-list">
                 <li>Accessibility-first design, including ADHD-friendly interfaces.</li>
@@ -405,7 +405,7 @@ const App = () => {
               <div className="mini-card">
                 <h3>Education</h3>
                 <ul className="principles">
-                  <li>Associate Degree, Media Design - Fontys (present)</li>
+                  <li>Associate Degree, Media Design - Fontys University of Applied Sciences</li>
                   <li>Propedeuse HBO Media Design - Fontys (2019)</li>
                   <li>HAVO - Comenius Lyceum Amsterdam (2018)</li>
                 </ul>
