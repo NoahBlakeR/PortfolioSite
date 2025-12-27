@@ -205,6 +205,10 @@ p {
   gap: 12px;
 }
 
+.header-spacer {
+  display: none;
+}
+
 .nav-panel {
   display: flex;
   align-items: center;
@@ -773,7 +777,7 @@ body.loaded .hero-copy {
     display: grid;
     grid-template-columns: auto 1fr auto;
     grid-template-areas:
-      "toggle logo toggle"
+      "toggle logo spacer"
       "cta cta cta"
       "panel panel panel";
     align-items: center;
@@ -789,14 +793,15 @@ body.loaded .hero-copy {
     display: contents;
   }
 
+  .header-spacer {
+    display: block;
+    grid-area: spacer;
+  }
+
   .nav-toggle {
     display: inline-flex;
     grid-area: toggle;
     justify-self: start;
-  }
-
-  .nav-toggle.is-open {
-    justify-self: end;
   }
 
   .nav-cta {
