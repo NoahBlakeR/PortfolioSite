@@ -868,6 +868,10 @@ body.loaded .hero-copy {
 }
 
 @media (max-width: 700px) {
+  .container {
+    padding: 0 28px;
+  }
+
   .section {
     padding: 60px 0;
   }
