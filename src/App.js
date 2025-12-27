@@ -116,7 +116,6 @@ const App = () => {
       <header className="site-header" ref={headerRef}>
         <div className="container header-inner">
           <div className="logo">Noah B.</div>
-          <span className="header-spacer" aria-hidden="true" />
           <div className="nav-group">
             <button
               className={`nav-toggle ${menuOpen ? 'is-open' : ''}`}

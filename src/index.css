@@ -205,10 +205,6 @@ p {
   gap: 12px;
 }
 
-.header-spacer {
-  display: none;
-}
-
 .nav-panel {
   display: flex;
   align-items: center;
@@ -774,20 +770,19 @@ body.loaded .hero-copy {
 
 @media (max-width: 900px) {
   .site-header {
-    padding-top: max(8px, env(safe-area-inset-top));
+    padding-top: env(safe-area-inset-top);
   }
 
   .header-inner {
     display: grid;
     grid-template-columns: auto 1fr auto;
     grid-template-areas:
-      "toggle logo spacer"
-      "cta cta cta"
+      "toggle logo cta"
       "panel panel panel";
     align-items: center;
     gap: 12px 16px;
-    padding-top: 20px;
-    padding-bottom: 12px;
+    padding-top: 14px;
+    padding-bottom: 10px;
   }
 
   .logo {
@@ -799,11 +794,6 @@ body.loaded .hero-copy {
     display: contents;
   }
 
-  .header-spacer {
-    display: block;
-    grid-area: spacer;
-  }
-
   .nav-toggle {
     display: inline-flex;
     grid-area: toggle;
@@ -812,7 +802,8 @@ body.loaded .hero-copy {
 
   .nav-cta {
     grid-area: cta;
-    justify-self: center;
+    justify-self: end;
+    width: auto;
   }
 
   .nav-panel {
@@ -931,7 +922,8 @@ body.loaded .hero-copy {
   }
 
   .contact-card {
-    padding: 24px;
+    padding: 28px;
+    margin: 0 6px;
   }
 
   .nav-toggle-label {
@@ -943,8 +935,8 @@ body.loaded .hero-copy {
   }
 
   .nav-cta {
-    padding: 10px 16px;
-    font-size: 0.9rem;
+    padding: 8px 12px;
+    font-size: 0.85rem;
   }
 }
 
