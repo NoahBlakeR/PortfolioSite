@@ -781,8 +781,8 @@ body.loaded .hero-copy {
       "panel panel panel";
     align-items: center;
     gap: 12px 16px;
-    padding-top: 14px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 16px;
   }
 
   .logo {
