@@ -202,7 +202,7 @@ p {
 .nav-group {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .nav-panel {
@@ -773,7 +773,7 @@ body.loaded .hero-copy {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     grid-template-areas:
-      "toggle logo spacer"
+      "toggle logo cta"
       "panel panel panel";
     align-items: center;
     gap: 12px 16px;
@@ -792,6 +792,11 @@ body.loaded .hero-copy {
     display: inline-flex;
     grid-area: toggle;
     justify-self: start;
+  }
+
+  .nav-cta {
+    grid-area: cta;
+    justify-self: end;
   }
 
   .nav-panel {
@@ -907,6 +912,19 @@ body.loaded .hero-copy {
 
   .contact-card {
     padding: 24px;
+  }
+
+  .nav-toggle-label {
+    display: none;
+  }
+
+  .nav-toggle {
+    padding: 10px 12px;
+  }
+
+  .nav-cta {
+    padding: 10px 16px;
+    font-size: 0.9rem;
   }
 }
 
