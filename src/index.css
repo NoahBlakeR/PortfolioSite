@@ -621,6 +621,37 @@ body.loaded .hero-copy {
   margin-bottom: 24px;
 }
 
+.work-media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.work-media {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-md);
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.work-media.wide {
+  grid-column: span 3;
+  min-height: 260px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 218, 232, 0.35)
+  );
+}
+
 .work-meta {
   background: rgba(255, 255, 255, 0.85);
   border: 1px solid var(--line);
@@ -863,6 +894,15 @@ body.loaded .hero-copy {
     grid-template-columns: 1fr;
   }
 
+  .work-media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .work-media.wide {
+    grid-column: span 2;
+    min-height: 220px;
+  }
+
   .work-detail-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -953,6 +993,14 @@ body.loaded .hero-copy {
 
   .project-card.feature .project-cover {
     min-height: 220px;
+  }
+
+  .work-media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-media.wide {
+    grid-column: span 1;
   }
 
   .work-detail-grid {

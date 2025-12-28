@@ -397,6 +397,17 @@ const WorkPage = () => (
             </div>
           </div>
         </div>
+        <div className="work-media-grid">
+          <div className="work-media wide">
+            <span>Project overview image</span>
+          </div>
+          <div className="work-media">
+            <span>Research snapshot</span>
+          </div>
+          <div className="work-media">
+            <span>UI flow / prototype</span>
+          </div>
+        </div>
         <div className="work-detail-grid">
           <div className="work-detail-card">
             <h3>Challenge</h3>
@@ -465,6 +476,17 @@ const WorkPage = () => (
               <span className="meta-label">Timeline</span>
               <span className="meta-value">2024</span>
             </div>
+          </div>
+        </div>
+        <div className="work-media-grid">
+          <div className="work-media wide">
+            <span>Onboarding journey map</span>
+          </div>
+          <div className="work-media">
+            <span>Flow states</span>
+          </div>
+          <div className="work-media">
+            <span>Interface details</span>
           </div>
         </div>
         <div className="work-detail-grid">
