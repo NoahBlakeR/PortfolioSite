@@ -3,7 +3,7 @@ import { Link, Route, Routes, useLocation } from 'react-router-dom';
 
 const HomePage = () => (
   <main id="main">
-    <section className="hero">
+    <section className="hero section section-cream">
       <div className="container hero-grid">
         <div className="hero-copy">
           <p className="eyebrow">UX Designer + Front-End</p>
@@ -58,7 +58,7 @@ const HomePage = () => (
       </div>
     </section>
 
-    <section className="clients section reveal" style={{ '--delay': '0ms' }}>
+    <section className="clients section section-white reveal" style={{ '--delay': '0ms' }}>
       <div className="container">
         <p className="eyebrow">Collaborated with</p>
         <div className="client-row">
@@ -71,7 +71,7 @@ const HomePage = () => (
       </div>
     </section>
 
-    <section id="work" className="section work">
+    <section id="work" className="section work section-rose">
       <div className="container">
         <div className="section-head">
           <div>
@@ -162,7 +162,7 @@ const HomePage = () => (
 
     <section
       id="process"
-      className="section process reveal"
+      className="section process section-white reveal"
       style={{ '--delay': '0ms' }}
     >
       <div className="container">
@@ -213,7 +213,7 @@ const HomePage = () => (
       </div>
     </section>
 
-    <section id="about" className="section about reveal" style={{ '--delay': '0ms' }}>
+    <section id="about" className="section about section-cream reveal" style={{ '--delay': '0ms' }}>
       <div className="container about-grid">
         <div>
           <p className="eyebrow">About</p>
@@ -261,7 +261,7 @@ const HomePage = () => (
 
     <section
       id="project-archive"
-      className="section archive reveal"
+      className="section archive section-white reveal"
       style={{ '--delay': '0ms' }}
     >
       <div className="container">
@@ -309,7 +309,7 @@ const HomePage = () => (
       </div>
     </section>
 
-    <section id="contact" className="section contact reveal" style={{ '--delay': '0ms' }}>
+    <section id="contact" className="section contact section-rose reveal" style={{ '--delay': '0ms' }}>
       <div className="container contact-card">
         <div>
           <p className="eyebrow">Contact</p>
@@ -333,7 +333,7 @@ const HomePage = () => (
 
 const WorkPage = () => (
   <main id="main">
-    <section className="section work-hero reveal" style={{ '--delay': '0ms' }}>
+    <section className="section work-hero section-cream reveal" style={{ '--delay': '0ms' }}>
       <div className="container work-hero-grid">
         <div>
           <p className="eyebrow">Selected work</p>
@@ -364,7 +364,7 @@ const WorkPage = () => (
     </section>
 
     <section
-      className="section work-detail reveal"
+      className="section work-detail section-white reveal"
       id="studio-krom"
       style={{ '--delay': '60ms' }}
     >
@@ -433,7 +433,7 @@ const WorkPage = () => (
     </section>
 
     <section
-      className="section work-detail reveal"
+      className="section work-detail section-rose reveal"
       id="philips"
       style={{ '--delay': '120ms' }}
     >

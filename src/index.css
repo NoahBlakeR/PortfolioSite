@@ -306,6 +306,18 @@ p {
   scroll-margin-top: 90px;
 }
 
+.section-cream {
+  background: rgba(255, 248, 242, 0.88);
+}
+
+.section-rose {
+  background: rgba(255, 218, 232, 0.45);
+}
+
+.section-white {
+  background: rgba(255, 255, 255, 0.7);
+}
+
 .hero {
   padding: 96px 0 48px;
 }
