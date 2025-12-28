@@ -1,0 +1,109 @@
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  box-shadow: 0 14px 30px rgba(15, 17, 26, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(15, 17, 26, 0.12);
+}
+
+.project-card.feature {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+}
+
+.project-card.feature .project-cover {
+  height: 100%;
+  min-height: 260px;
+}
+
+.project-card.feature .project-body {
+  padding: 32px;
+}
+
+.project-cover {
+  height: 180px;
+  background: #e1e5f0;
+  position: relative;
+}
+
+.cover-1 {
+  background: linear-gradient(140deg, rgba(192, 24, 99, 0.9), rgba(255, 122, 168, 0.9));
+}
+
+.cover-2 {
+  background: linear-gradient(140deg, rgba(255, 122, 168, 0.9), rgba(255, 178, 135, 0.9));
+}
+
+.cover-3 {
+  background: linear-gradient(140deg, rgba(192, 24, 99, 0.85), rgba(15, 17, 26, 0.9));
+}
+
+.cover-4 {
+  background: linear-gradient(140deg, rgba(15, 17, 26, 0.95), rgba(255, 178, 135, 0.9));
+}
+
+.project-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.project-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 8px 0 16px;
+}
+
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card.feature {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card.feature .project-cover {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 700px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card.feature {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-cover {
+    height: 160px;
+  }
+}

@@ -1,0 +1,216 @@
+.work-detail-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 28px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+.work-media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.work-media {
+  appearance: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.92);
+  padding: 14px;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 10px 24px rgba(15, 17, 26, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.work-media.wide {
+  grid-column: span 3;
+}
+
+.work-media:hover {
+  transform: translateY(-4px);
+  border-color: rgba(192, 24, 99, 0.35);
+  box-shadow: 0 18px 32px rgba(15, 17, 26, 0.12);
+}
+
+.work-media:focus-visible {
+  outline: 3px solid rgba(192, 24, 99, 0.4);
+  outline-offset: 3px;
+}
+
+.work-media-thumb {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(15, 17, 26, 0.08);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 218, 232, 0.5));
+  min-height: 200px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-weight: 600;
+  text-align: center;
+  padding: 16px;
+}
+
+.work-media.wide .work-media-thumb {
+  min-height: 280px;
+}
+
+.work-media-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.work-media-placeholder {
+  font-size: 0.95rem;
+}
+
+.work-media-title {
+  font-weight: 700;
+}
+
+.work-media-subtle {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.work-media-hint {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.work-media:hover .work-media-hint,
+.work-media:focus-visible .work-media-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.work-media.tone-rose .work-media-thumb,
+.lightbox-media.tone-rose {
+  background: linear-gradient(135deg, rgba(255, 190, 215, 0.7), rgba(255, 236, 244, 0.95));
+}
+
+.work-media.tone-cream .work-media-thumb,
+.lightbox-media.tone-cream {
+  background: linear-gradient(135deg, rgba(255, 244, 232, 0.9), rgba(255, 255, 255, 0.95));
+}
+
+.work-media.tone-peach .work-media-thumb,
+.lightbox-media.tone-peach {
+  background: linear-gradient(135deg, rgba(255, 205, 170, 0.65), rgba(255, 243, 232, 0.95));
+}
+
+.work-meta {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.work-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.work-detail-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: 0 10px 24px rgba(15, 17, 26, 0.08);
+}
+
+.work-detail-card h3 {
+  margin-bottom: 10px;
+}
+
+.work-detail-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.work-detail-cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.work-note {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+@media (max-width: 1100px) {
+  .work-detail-header {
+    grid-template-columns: 1fr;
+  }
+
+  .work-media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .work-media.wide {
+    grid-column: span 2;
+  }
+
+  .work-media-thumb {
+    min-height: 190px;
+  }
+
+  .work-media.wide .work-media-thumb {
+    min-height: 240px;
+  }
+
+  .work-detail-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .work-media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-media.wide {
+    grid-column: span 1;
+  }
+
+  .work-media-thumb {
+    min-height: 180px;
+  }
+
+  .work-media.wide .work-media-thumb {
+    min-height: 220px;
+  }
+
+  .work-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .work-detail-card,
+  .work-meta {
+    padding: 18px;
+  }
+}

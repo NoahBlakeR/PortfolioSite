@@ -1,0 +1,31 @@
+.table-wrap {
+  overflow-x: auto;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 12px;
+}
+
+.archive-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+}
+
+.archive-table th,
+.archive-table td {
+  text-align: left;
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.archive-table th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.archive-table tr:last-child td {
+  border-bottom: none;
+}
